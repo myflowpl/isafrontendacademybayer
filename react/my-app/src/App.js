@@ -1,5 +1,6 @@
 import MyName from './MyName';
 import { Contact } from './Contact';
+import { Wrapper } from './Wrapper';
 
 const data = {
     phone: '111 222 333',
@@ -10,11 +11,11 @@ const data = {
 function App() {
 
   return (
-    <>
+    <Wrapper>
         <MyName name="Kamil" />
         <MyName name="Kamil" surname="Richert" />
         <Contact data={data} />
-    </>
+    </Wrapper>
   );
 }
 
