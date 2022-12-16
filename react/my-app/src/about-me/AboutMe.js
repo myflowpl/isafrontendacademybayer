@@ -1,5 +1,6 @@
 import MyName from './MyName';
 import {Contact} from './Contact';
+import {ContactStyled} from './ContactStyled';
 import {MyFavouriteDishes} from './MyFavouriteDishes';
 
 const data = {
@@ -19,6 +20,7 @@ export const AboutMe = () => (
         <MyName name="Kamil" />
         <MyName name="Kamil" surname="Richert" />
         <Contact data={data} />
+        <ContactStyled data={data} />
         <MyFavouriteDishes dishes={dishes} />
     </>
 )
