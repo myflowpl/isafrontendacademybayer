@@ -1,9 +1,9 @@
-.contact-container {
+.container {
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
-.contact-container h4 {
+.container h4 {
     color: orange;
 }
