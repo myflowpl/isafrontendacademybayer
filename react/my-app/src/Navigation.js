@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+
+const getActiveStyles = ({ isActive }) => isActive ? { textDecoration: "underline" } : undefined
 
 export const Navigation = () => {
     return (
@@ -13,11 +15,11 @@ export const Navigation = () => {
               <Typography variant="h6" component="div">
                 My App
               </Typography>
-              <Button color="inherit" component={Link} to="/">Home</Button>
-              <Button color="inherit" component={Link} to="/about-me">About me</Button>
-              <Button color="inherit" component={Link} to="/game">Game</Button>
-              <Button color="inherit" component={Link} to="/forms">Forms</Button>
-              <Button color="inherit" component={Link} to="/users">Users</Button>
+              <Button color="inherit" component={NavLink} style={getActiveStyles} to="/">Home</Button>
+              <Button color="inherit" component={NavLink} style={getActiveStyles} to="/about-me">About me</Button>
+              <Button color="inherit" component={NavLink} style={getActiveStyles} to="/game">Game</Button>
+              <Button color="inherit" component={NavLink} style={getActiveStyles} to="/forms">Forms</Button>
+              <Button color="inherit" component={NavLink} style={getActiveStyles} to="/users">Users</Button>
             </Toolbar>
           </AppBar>
         </Box>
