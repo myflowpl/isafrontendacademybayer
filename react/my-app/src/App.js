@@ -1,3 +1,4 @@
+import { Routes, Route } from 'react-router-dom';
 import { Navigation } from './Navigation'
 import { Wrapper } from './Wrapper'
 import { AboutMe } from './about-me/AboutMe'
@@ -14,13 +15,20 @@ function App() {
     <>
         <Navigation />
         <Wrapper>
-            <MyBoostedForm />
-            <MyBetterForm />
-            <MyForm />
-            <Users />
-            <GameClass name="Just Another Game" />
-            <Game name="Catan" />
-            <AboutMe />
+            <Routes>
+                <Route path="/" element={<h1>Welcome to our site!</h1>} />
+                <Route path="/about-me" element={<AboutMe />} />
+                <Route path="/forms" element={<>
+                        <MyBoostedForm />
+                        <MyBetterForm />
+                        <MyForm />
+                    </>} />
+                <Route path="/game" element={<>
+                        <GameClass name="Just Another Game" />
+                        <Game name="Catan" />
+                    </>} />
+                <Route path="/users" element={<Users />} />
+            </Routes>
         </Wrapper>
     </>
   );
