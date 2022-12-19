@@ -1,5 +1,8 @@
 import {useState, useEffect} from 'react';
 import styled from 'styled-components';
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
+import Icon from '@mui/material/Icon'
 
 const Score = styled.span`
     color: ${props => props.isRed ? 'red' : 'inherit'};
@@ -25,11 +28,15 @@ export const Game = ({ name }) => {
 
     return (
         <>
-            <h3>Welcome to the game {name}!</h3>
-            <h4>Your number of points is: <Score isRed={points < 0}>{points}</Score>.</h4>
+            <Typography variant="h5">Welcome to the game {name}!</Typography>
+            <Typography variant="h4">Your number of points is: <Score isRed={points < 0}>{points}</Score>.</Typography>
             <div>
-                <button onClick={increase}>+</button>
-                <button onClick={decrease}>-</button>
+                <Button variant="contained" color="primary" onClick={increase}>
+                    <Icon>add</Icon>
+                </Button>
+                <Button variant="contained" color="error" onClick={decrease}>
+                    <Icon>remove</Icon>
+                </Button>
             </div>
         </>
     )

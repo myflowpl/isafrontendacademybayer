@@ -20,18 +20,20 @@ export const MyBoostedForm = () => {
         },
       });
 
+      const { name, age, gender, comment } = formik.values;
+
     return <Form onSubmit={formik.handleSubmit}>
         <label htmlFor="name">Name</label>
-        <input type="text" id="name" value={formik.values.name} onChange={formik.handleChange} />
+        <input type="text" id="name" value={name} onChange={formik.handleChange} />
         <label htmlFor="age">Age</label>
-        <input type="number" id="age" value={formik.values.age} onChange={formik.handleChange} />
+        <input type="number" id="age" value={age} onChange={formik.handleChange} />
         <label htmlFor="gender">Gender</label>
-        <select id="gender" value={formik.values.gender} onChange={formik.handleChange}>
+        <select id="gender" value={gender} onChange={formik.handleChange}>
             <option>male</option>
             <option>female</option>
         </select>
         <label htmlFor="comment">Comment</label>
-        <textarea id="comment" value={formik.values.comment} onChange={formik.handleChange} />
+        <textarea id="comment" value={comment} onChange={formik.handleChange} />
         <input type="submit" value="Submit" />
     </Form>
 }
