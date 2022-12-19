@@ -1,3 +1,4 @@
+import { Navigation } from './Navigation'
 import { Wrapper } from './Wrapper'
 import { AboutMe } from './about-me/AboutMe'
 import { Game } from './game/Game';
@@ -10,15 +11,18 @@ import { MyBoostedForm } from './forms/MyBoostedForm';
 function App() {
 
   return (
-    <Wrapper>
-        <MyBoostedForm />
-        <MyBetterForm />
-        <MyForm />
-        <Users />
-        <GameClass name="Just Another Game" />
-        <Game name="Catan" />
-        <AboutMe />
-    </Wrapper>
+    <>
+        <Navigation />
+        <Wrapper>
+            <MyBoostedForm />
+            <MyBetterForm />
+            <MyForm />
+            <Users />
+            <GameClass name="Just Another Game" />
+            <Game name="Catan" />
+            <AboutMe />
+        </Wrapper>
+    </>
   );
 }
 
