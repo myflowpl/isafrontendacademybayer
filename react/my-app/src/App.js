@@ -5,11 +5,13 @@ import { GameClass } from './game/GameClass';
 import { Users } from './users/Users';
 import { MyForm } from './forms/MyForm';
 import { MyBetterForm } from './forms/MyBetterForm';
+import { MyBoostedForm } from './forms/MyBoostedForm';
 
 function App() {
 
   return (
     <Wrapper>
+        <MyBoostedForm />
         <MyBetterForm />
         <MyForm />
         <Users />
