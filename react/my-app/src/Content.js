@@ -7,6 +7,7 @@ import { Users } from './users/Users';
 import { MyForm } from './forms/MyForm';
 import { MyBetterForm } from './forms/MyBetterForm';
 import { MyBoostedForm } from './forms/MyBoostedForm';
+import { Sign } from './sign/Sign';
 
 export const Content = () => (
     <Wrapper>
@@ -23,6 +24,7 @@ export const Content = () => (
                     <Game name="Catan" />
                 </>} />
             <Route path="/users" element={<Users />} />
+            <Route path="/sign" element={<Sign />} />
         </Routes>
     </Wrapper>
 )

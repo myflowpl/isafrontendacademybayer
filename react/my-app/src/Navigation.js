@@ -20,6 +20,7 @@ export const Navigation = () => {
               <Button color="inherit" component={NavLink} style={getActiveStyles} to="/game">Game</Button>
               <Button color="inherit" component={NavLink} style={getActiveStyles} to="/forms">Forms</Button>
               <Button color="inherit" component={NavLink} style={getActiveStyles} to="/users">Users</Button>
+              <Button color="inherit" component={NavLink} style={getActiveStyles} to="/sign">Sign</Button>
             </Toolbar>
           </AppBar>
         </Box>
