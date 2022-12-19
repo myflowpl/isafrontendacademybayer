@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
 const Score = styled.span`
@@ -16,6 +16,13 @@ export const Game = ({ name }) => {
         setPoints(points - 5);
     }
 
+    useEffect(() => {
+        if (points === 50) {
+            alert(`Congratulations! You won the game ${name}!`);
+            setPoints(0);
+        }
+    })
+
     return (
         <>
             <h3>Welcome to the game {name}!</h3>
@@ -27,3 +34,5 @@ export const Game = ({ name }) => {
         </>
     )
 }
+
+// <h4>Your number of points is: <span style={{ color: points < 0 ? 'red' : 'inherit'}}>{points}</span>.</h4>
