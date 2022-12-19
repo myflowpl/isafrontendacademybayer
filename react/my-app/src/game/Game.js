@@ -21,7 +21,7 @@ export const Game = ({ name }) => {
             alert(`Congratulations! You won the game ${name}!`);
             setPoints(0);
         }
-    })
+    }, [points, name]);
 
     return (
         <>
