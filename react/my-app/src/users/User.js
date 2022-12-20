@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const User = ({ user }) => {
     // user.phone === (254) 954-1289
     const areaCodeEndIndex = user.phone.indexOf(")");
@@ -8,7 +10,8 @@ export const User = ({ user }) => {
     // areaCode ===  954-1289
 
     return <li>
-        {user.name} works in {user.company.name} <br />
+        <Link to={`/users/${user.id}`}>{user.name} </Link> 
+         works in {user.company.name} <br />
         <i>{areaCode}</i> {actualPhoneNumber}
     </li>
 }
