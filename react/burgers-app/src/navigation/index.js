@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -17,16 +18,18 @@ export const Navigation = () => {
                 color="inherit"
                 aria-label="menu"
                 sx={{ mr: 2 }}
+                component={Link}
+                to="/"
               >
                 <Avatar alt="logo" src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" />
               </IconButton>
               <Typography variant="h6" component="div" sx={{ mr: 2 }}>
                 Burgers App
               </Typography>
-              <Button color="inherit">Menu</Button>
-              <Button color="inherit">Admin</Button>
+              <Button color="inherit" component={Link} to="/menu">Menu</Button>
+              <Button color="inherit" component={Link} to="/admin">Admin</Button>
               <Box sx={{ flexGrow: 1 }} />
-              <Button color="inherit">Login</Button>
+              <Button color="inherit" component={Link} to="/sign-in">Login</Button>
             </Toolbar>
           </AppBar>
         </Box>
