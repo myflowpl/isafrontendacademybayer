@@ -3,7 +3,8 @@ export const Wrapper = (props) => (
             {
                display: 'flex',
                flexDirection: 'column',
-               alignItems: 'center'
+               alignItems: 'center',
+               marginTop: '30px'
             }
         }>
             {props.children}
