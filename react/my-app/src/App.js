@@ -1,22 +1,13 @@
-import { createContext, useState } from 'react';
-import Button from '@mui/material/Button';
 import { Navigation } from './Navigation'
 import { Content } from './Content'
-
-export const LanguageContext = createContext('en');
+import { LanguageContextProvider } from './contexts/language/LanugageContext'
 
 function App() {
-    const [lang, setLang] = useState('en');
-
     return (
-        <LanguageContext.Provider value={lang}>
+        <LanguageContextProvider>
             <Navigation />
-            <div>
-                <Button onClick={() => setLang('en')}>EN</Button>
-                <Button onClick={() => setLang('pl')}>PL</Button>
-            </div>
             <Content />
-        </LanguageContext.Provider>
+        </LanguageContextProvider>
     );
 }
 

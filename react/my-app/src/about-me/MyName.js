@@ -1,11 +1,10 @@
-import { useContext } from 'react';
-import { LanguageContext } from '../App';
+import { useLanguageContext } from '../contexts/language/LanugageContext';
 
 function MyName(props) {
-    const language = useContext(LanguageContext);
+    const { lang } = useLanguageContext();
 
     if (props.surname) {
-        if (language === 'pl') {
+        if (lang === 'pl') {
             return <h1>Cześć moje imię to {props.name}, 
                a nazwisko to {props.surname}!</h1>
         }
@@ -15,7 +14,7 @@ function MyName(props) {
     }
 
 
-    if (language === 'pl') {
+    if (lang === 'pl') {
         return <h1>Cześć moje imię to {props.name}!</h1>
     }
 
