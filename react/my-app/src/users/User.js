@@ -10,7 +10,9 @@ export const User = ({ user }) => {
     // areaCode ===  954-1289
 
     return <li>
-        <Link to={`/users/${user.id}`}>{user.name} </Link> 
+        <Link to={`/users/${user.id}`}>
+            {user.name} 
+        </Link> 
          works in {user.company.name} <br />
         <i>{areaCode}</i> {actualPhoneNumber}
     </li>
