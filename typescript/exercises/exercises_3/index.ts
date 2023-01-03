@@ -3,7 +3,21 @@
 Complete the following functions with their typing.
 
 */
-var peoples = [
+interface User {
+    type: 'user';
+    name: string;
+    languages: string[];
+}
+
+interface Admin {
+    type: 'admin';
+    name: string;
+    role: string;
+}
+
+type Person = User | Admin;
+
+var peoples: Person[] = [
     {
         name: 'Jan',
         type: 'user',
@@ -15,13 +29,14 @@ var peoples = [
         role: 'security'
     },
 ];
-function isUser(person) {
+function isUser(person: Person): person is User {
     return person.type === 'user';
 }
-function isAdmin(person) {
+function isAdmin(person: Person): person is Admin {
     return person.type === 'admin';
 }
-function showIntro(person) {
+
+function showIntro(person: Person) {
     var additionalInformation = '';
     if (isUser(person)) {
         additionalInformation = person.languages.join(',');
