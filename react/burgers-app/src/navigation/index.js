@@ -12,7 +12,6 @@ import Avatar from '@mui/material/Avatar'
 import { getAuth, signOut } from 'firebase/auth';
 /* END */
 
-
 export const Navigation = () => {
     const user = useUserContext();
 
