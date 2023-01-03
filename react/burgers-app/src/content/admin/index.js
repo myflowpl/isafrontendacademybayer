@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { PageWrapper } from "../../common/page-wrapper"
 import { AddModalButton } from './add-modal';
+import { Row } from './row';
 import styled from 'styled-components';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -10,7 +10,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
 
 const ButtonContainer = styled.div`
     margin-top: 20px;
@@ -20,13 +19,12 @@ const ButtonContainer = styled.div`
 export const Admin = () => {
     const [burgers, setBurgers] = useState([]);
 
-    const fetchBurgers = () => {
-        fetch('https://rest-api-b6410.firebaseio.com/burgers.json')
-            .then(r => r.json())
-            .then(data => {
-                const formattedData = Object.keys(data).map(key => ({ id: key, ...data[key] }));
-                setBurgers(formattedData);
-            })
+    const fetchBurgers = async () => {
+        const response = await fetch('https://rest-api-b6410.firebaseio.com/burgers.json');
+        const data = await response.json();
+
+        const formattedData = Object.keys(data).map(key => ({ id: key, ...data[key] }));
+        setBurgers(formattedData);
     }
 
     useEffect(() => {
@@ -47,19 +45,7 @@ export const Admin = () => {
             </TableHead>
             <TableBody>
                 {burgers.map(burger => (
-                    <TableRow key={burger.id}>
-                        <TableCell>
-                            <Link to={`/menu/${burger.id}`}>{burger.name}</Link>
-                        </TableCell>
-                        <TableCell align="right">{burger.ingredients}</TableCell>
-                        <TableCell align="right">{burger.price}</TableCell>
-                        <TableCell>
-                            <Button variant="contained" color="primary">Edit</Button>
-                        </TableCell>
-                        <TableCell>
-                            <Button variant="contained" color="error">Delete</Button>
-                        </TableCell>
-                    </TableRow>
+                    <Row key={burger.id} burger={burger} />
                 ))}
             </TableBody>
             </Table>
