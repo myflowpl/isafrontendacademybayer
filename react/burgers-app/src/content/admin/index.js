@@ -20,13 +20,17 @@ const ButtonContainer = styled.div`
 export const Admin = () => {
     const [burgers, setBurgers] = useState([]);
 
-    useEffect(() => {
+    const fetchBurgers = () => {
         fetch('https://rest-api-b6410.firebaseio.com/burgers.json')
             .then(r => r.json())
             .then(data => {
                 const formattedData = Object.keys(data).map(key => ({ id: key, ...data[key] }));
                 setBurgers(formattedData);
             })
+    }
+
+    useEffect(() => {
+        fetchBurgers();
     }, []);
 
     return <PageWrapper title="Admin">
@@ -61,7 +65,7 @@ export const Admin = () => {
             </Table>
         </TableContainer>
         <ButtonContainer>
-            <AddModalButton />
+            <AddModalButton refresh={fetchBurgers} />
         </ButtonContainer>
     </PageWrapper>
 }
