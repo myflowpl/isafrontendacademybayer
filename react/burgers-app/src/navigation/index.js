@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useUserContext } from '../services/user-context'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,7 +8,21 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar'
 
+/* FIREBASE YOU CAN OMIT THIS PART */
+import { getAuth, signOut } from 'firebase/auth';
+/* END */
+
+
 export const Navigation = () => {
+    const user = useUserContext();
+
+    const handleLogout = () => {
+        /* FIREBASE YOU CAN OMIT THIS PART */
+        const auth = getAuth();
+        signOut(auth);
+        /* END */
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static">
@@ -29,7 +44,11 @@ export const Navigation = () => {
               <Button color="inherit" component={Link} to="/menu">Menu</Button>
               <Button color="inherit" component={Link} to="/admin">Admin</Button>
               <Box sx={{ flexGrow: 1 }} />
-              <Button color="inherit" component={Link} to="/sign-in">Login</Button>
+              {
+                user 
+                    ? <Button color="inherit" onClick={handleLogout} >Logout</Button>
+                    : <Button color="inherit" component={Link} to="/sign-in">Login</Button>
+              }
             </Toolbar>
           </AppBar>
         </Box>
