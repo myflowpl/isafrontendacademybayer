@@ -4,13 +4,23 @@ import TableRow from '@mui/material/TableRow';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-export const EditRow = ({ burger, cancelEditMode }) => {
+export const EditRow = ({ burger, cancelEditMode, refresh }) => {
     const [formData, setFormData] = useState(burger);
 
     const handleChange = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSave = () => {
+        fetch(`https://rest-api-b6410.firebaseio.com/burgers/${burger.id}.json`, {
+            method: 'PUT',
+            body: JSON.stringify(formData)
+        }).then(() => {
+            cancelEditMode();
+            refresh();
         })
     }
 
@@ -30,7 +40,7 @@ export const EditRow = ({ burger, cancelEditMode }) => {
                 value={price} onChange={handleChange} />
         </TableCell>
         <TableCell>
-            <Button variant="contained" color="success">Save</Button>
+            <Button variant="contained" color="success" onClick={handleSave}>Save</Button>
         </TableCell>
         <TableCell>
             <Button variant="contained" color="inherit" onClick={cancelEditMode}>Cancel</Button>

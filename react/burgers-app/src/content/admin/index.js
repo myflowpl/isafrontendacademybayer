@@ -58,6 +58,7 @@ export const Admin = () => {
                     ? <EditRow
                         key={burger.id}
                         burger={burger}
+                        refresh={fetchBurgers}
                         cancelEditMode={cancelEditMode}
                     />
                     : <Row 
