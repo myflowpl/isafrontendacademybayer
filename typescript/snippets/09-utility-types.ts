@@ -1,4 +1,4 @@
-// Dostępne wbudowane typy pomocniczne "https://www.typescriptlang.org/docs/handbook/utility-types.html"
+// Built-in helper types available "https://www.typescriptlang.org/docs/handbook/utility-types.html"
 
 interface Cars {
   id: number;
@@ -12,8 +12,9 @@ interface User {
   email?: string;
 }
 
-/* Proszę zwrócić uwagę na typ RequiredUser który zawiera 3 pola a nie 1
- * ponieważ łączy się z interface z pliku "generic-types.ts"
+
+/* Please note that the RequiredUser type contains 3 fields, not 1
+ * because it connects to the interface from the "generic-types.ts" file
 */
 type RequiredUser = Required<User>;
 
@@ -27,7 +28,7 @@ interface ExampleStudent {
 }
 
 
-// Typy pomocniczne można konstrułować własne oraz można je łączyć
+// Helper types can be created by us and combined
 type Reveal<T> = { [P in keyof T]: T[P] }
 type RequiredFields<T, K extends keyof T> = Reveal<
   Required<Pick<T, K>> & Omit<T, K>
