@@ -3,9 +3,11 @@ import { useParams } from 'react-router-dom';
 import { PageWrapper } from '../../../common/page-wrapper'
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export const Details = () => {
     const [burger, setBurger] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams();
 
     useEffect(() => {
@@ -14,10 +16,21 @@ export const Details = () => {
             .then(data => {
                 setBurger(data)
             })
+            .finally(() => {
+                setIsLoading(false)
+            })
     }, [id]);
 
+    if (isLoading) {
+        return <PageWrapper>
+            <CircularProgress />
+        </PageWrapper>
+    }
+
     if (!burger) {
-        return null;
+        return <PageWrapper title="An error occurred!">
+            <Typography>There is no such a burger!</Typography>
+        </PageWrapper>;
     }
 
     return <PageWrapper title={burger.name}>
