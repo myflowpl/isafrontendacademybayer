@@ -45,7 +45,11 @@ export const Admin = () => {
             </TableHead>
             <TableBody>
                 {burgers.map(burger => (
-                    <Row key={burger.id} burger={burger} />
+                    <Row 
+                        key={burger.id} 
+                        burger={burger} 
+                        refresh={fetchBurgers}
+                    />
                 ))}
             </TableBody>
             </Table>
