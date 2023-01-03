@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { PageWrapper } from "../../common/page-wrapper"
+import { Auth } from "../../common/auth"
 import { AddModalButton } from './add-modal';
 import { Row } from './row';
 import { EditRow } from './edit-row';
@@ -41,38 +42,42 @@ export const Admin = () => {
         fetchBurgers();
     }, []);
 
-    return <PageWrapper title="Admin">
-        <TableContainer component={Paper}>
-            <Table>
-            <TableHead>
-                <TableRow>
-                    <TableCell>Name</TableCell>
-                    <TableCell align="right">Ingredients</TableCell>
-                    <TableCell align="right">Price ($)</TableCell>
-                    <TableCell sx={{ width: '65px' }} />
-                    <TableCell sx={{ width: '85px' }} />
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                {burgers.map(burger => editId === burger.id 
-                    ? <EditRow
-                        key={burger.id}
-                        burger={burger}
-                        refresh={fetchBurgers}
-                        cancelEditMode={cancelEditMode}
-                    />
-                    : <Row 
-                        key={burger.id} 
-                        burger={burger} 
-                        refresh={fetchBurgers}
-                        enterEditMode={enterEditMode}
-                    />
-                )}
-            </TableBody>
-            </Table>
-        </TableContainer>
-        <ButtonContainer>
-            <AddModalButton refresh={fetchBurgers} />
-        </ButtonContainer>
-    </PageWrapper>
+    return (
+        <Auth>
+            <PageWrapper title="Admin">
+                <TableContainer component={Paper}>
+                    <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Name</TableCell>
+                            <TableCell align="right">Ingredients</TableCell>
+                            <TableCell align="right">Price ($)</TableCell>
+                            <TableCell sx={{ width: '65px' }} />
+                            <TableCell sx={{ width: '85px' }} />
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {burgers.map(burger => editId === burger.id 
+                            ? <EditRow
+                                key={burger.id}
+                                burger={burger}
+                                refresh={fetchBurgers}
+                                cancelEditMode={cancelEditMode}
+                            />
+                            : <Row 
+                                key={burger.id} 
+                                burger={burger} 
+                                refresh={fetchBurgers}
+                                enterEditMode={enterEditMode}
+                            />
+                        )}
+                    </TableBody>
+                    </Table>
+                </TableContainer>
+                <ButtonContainer>
+                    <AddModalButton refresh={fetchBurgers} />
+                </ButtonContainer>
+            </PageWrapper>
+        </Auth>
+    )
 }

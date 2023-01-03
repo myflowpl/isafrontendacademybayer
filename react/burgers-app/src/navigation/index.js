@@ -41,7 +41,7 @@ export const Navigation = () => {
                 Burgers App
               </Typography>
               <Button color="inherit" component={Link} to="/menu">Menu</Button>
-              <Button color="inherit" component={Link} to="/admin">Admin</Button>
+              {user && <Button color="inherit" component={Link} to="/admin">Admin</Button>}
               <Box sx={{ flexGrow: 1 }} />
               {
                 user 
