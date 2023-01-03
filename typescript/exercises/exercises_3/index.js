@@ -1,9 +1,7 @@
 /**
 
-Ćwiczenie 3
+Complete the following functions with their typing.
 
-Ćwiczenie:
-  Uzupełnij treść poniższych funkcji wraz z ich typowaniem.
 */
 var peoples = [
     {

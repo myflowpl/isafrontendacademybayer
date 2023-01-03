@@ -1,8 +1,7 @@
 /**
 
-Ćwiczenie 2
+Complete the following functions with their typing. Remember to change the `unknown` typings.
 
-Uzupełnij treść poniższych funkcji wraz z ich typowaniem. Pamiętaj o zmianie typowań `unknown`.
 */
 var cars = [
     {

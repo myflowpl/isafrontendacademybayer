@@ -1,5 +1,4 @@
 /*
-  Ćwiczenie 1:
-  Celem zadania jest uruchomienie kompilatora TS i dodanie odpowiedniego typu.
+  The goal of the task is to run the TS compiler and add the appropriate type.
 */
 const excercises1: number = 'DOIT';

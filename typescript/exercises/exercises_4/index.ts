@@ -1,32 +1,22 @@
 /*
-  Ćwiczenie 1
+  Exercise 1
 
-  Utwórz typ płatności zawierający kwotę, walutę (tylko 'PLN') oraz datę
+  Create a payment type containing amount, currency ('PLN' only) and date
 */
 
 
 /*
-  Ćwiczenie 2
+  Exercise 2
 
-  Utwórz typ produktu zawierający nazwę, cenę, ilość dostępnych sztuk, rodzaj produktu (tylko 'telefon' i 'komputer')
+  Create a product type containing name, price, quantity of available items, product type (only 'phone' and 'computer')
 */
 
 
 
 /*
-  Ćwiczenie 3
+  Exercise 3
 
-  Utwórz typ zamówienia zawierający informację o płatności (ćwiczenie 1), produkcie (ćwiczenie 2) oraz datę zamówienia oraz statusem (tylko 'rozpoczęta', 'w trakcie', 'zakończona')
-*/
-
-
-
-
-
-/*
-  Ćwiczenie 4
-
-  Utwórz funkcję która zwróci informację o produkcie (ćwiczenie 2) z przekazanego do niej zamówienia (ćwiczenie 3)
+  Create an order type containing information about payment (exercise 1), product (exercise 2) and order date and status (only 'started', 'in progress', 'completed')
 */
 
 
@@ -34,9 +24,17 @@
 
 
 /*
-  Ćwiczenie 5
+  Exercise 4
 
-  Utwórz funkcję która zwróci informację o płatnośći (ćwiczenie 1) z przekazanego do niej zamówienia (ćwiczenie 3)
+  Create a function that will return product information (Exercise 2) from the order passed to it (Exercise 3)
 */
 
 
+
+
+
+/*
+  Exercise 5
+
+  Create a function that will return payment information (Exercise 1) from the order passed to it (Exercise 3)
+*/

@@ -1,32 +1,32 @@
 let anything: any = 'test';
 
-// Kompilator przestaje nas informować o błędzie taki zapis wygeneruje błąd w już działającej aplikacji
+// The compiler stops informing us about the error, such a record will generate an error in the already running application
 anything.add();
 
-interface Kurczak {
-  krajPochodzenia: 'PL' | 'DE',
+interface Chicken {
+  country: 'PL' | 'DE',
   cena: number,
   farma: string,
 }
 
-interface KurczakZWolnegoWybiegu extends Kurczak {
-  krajPochodzenia: 'PL',
+interface HealthyChicken extends Chicken {
+    country: 'PL',
   farma: 'WolnaKurka'
 }
 
-let kurczakZBiedronki: unknown = {
-  krajPochodzenia: 'PL',
-  cena: 20,
-  farma: 'WolnaKurka'
+let biedronkaChicken: unknown = {
+  country: 'PL',
+  price: 20,
+  farm: 'WolnaKurka'
 }
 
-function kurczakZWolnegoWybiegu(kurczak: any): kurczak is KurczakZWolnegoWybiegu {
+function healthtChicken(kurczak: any): kurczak is HealthyChicken {
   return kurczak.krajPochodzenia === 'PL' && kurczak.farma === 'WolnaKurka';
 }
 
-function kupKurczaka(): void {
-  // const kurczak = kurczakZBiedronki; //  ❌ nie mamy dostępu do żadnego pola ponieważ typ jest unknown
- if (kurczakZWolnegoWybiegu(kurczakZBiedronki)) {
-   const kurczak = kurczakZBiedronki; // ✅ Tutaj mamy już dostęp do pól z typu "KurczakZWolnegoWybiegu"
+function buyChicken(): void {
+  // const chicken = biedronkaChicken; //  ❌ we don't have access to any field because the type is unknown
+ if (healthtChicken(biedronkaChicken)) {
+   const chicken = biedronkaChicken; // ✅ Here we already have access to the fields of the "KurczakZWolnegoWybiegu" type
  }
 }

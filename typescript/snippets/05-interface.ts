@@ -16,7 +16,7 @@ interface Student2 extends UserType {
   age: number,
 }
 
-// Interface można rozszerzać jest on ze sobą łączony
+// The interface is expandable, it is merged with each other
 interface UserInterface {
   country: 'PL' | 'GB',
 }
@@ -28,7 +28,7 @@ const test: Student = {
   country: 'PL',
 }
 
-// ❌ W przypadku typów nie ma takiej możliwości
+// ❌ This is not possible with types
 // type UserType {
 //   country: 'PL' | 'GB',
 // }

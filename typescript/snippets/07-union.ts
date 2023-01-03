@@ -15,10 +15,10 @@ type SinglePayment = Cash | Card;
 
 declare let payment: SinglePayment;
 
-// payment.rejected // ❌ nie mamy dostępu ponieważ nie wiemy czy płatność jest kartą czy gotówką
+// payment.rejected // ❌ we don't have access because we don't know if the payment is a card or cash
 
 switch(payment.type) {
   case 'card':
-    payment.rejected // Tutaj mamy już dostęp ponieważ TypeScript ma pewność, że płatność jest gotówką
+    payment.rejected // Here we have access because TypeScript makes sure the payment is cash
     break;
 }
