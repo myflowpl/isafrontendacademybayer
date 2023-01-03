@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { PageWrapper } from "../../common/page-wrapper"
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -33,7 +34,9 @@ export const Menu = () => {
             <TableBody>
                 {burgers.map(burger => (
                     <TableRow key={burger.id}>
-                        <TableCell>{burger.name}</TableCell>
+                        <TableCell>
+                            <Link to={`/menu/${burger.id}`}>{burger.name}</Link>
+                        </TableCell>
                         <TableCell align="right">{burger.ingredients}</TableCell>
                         <TableCell align="right">{burger.price}</TableCell>
                     </TableRow>
