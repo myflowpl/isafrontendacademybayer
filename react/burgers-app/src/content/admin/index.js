@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { PageWrapper } from "../../common/page-wrapper"
 import { AddModalButton } from './add-modal';
 import { Row } from './row';
+import { EditRow } from './edit-row';
 import styled from 'styled-components';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -18,6 +19,15 @@ const ButtonContainer = styled.div`
 
 export const Admin = () => {
     const [burgers, setBurgers] = useState([]);
+    const [editId, setEditId] = useState(null);
+
+    const enterEditMode = (id) => {
+        setEditId(id);
+    }
+
+    const cancelEditMode = () => {
+        setEditId(null);
+    }
 
     const fetchBurgers = async () => {
         const response = await fetch('https://rest-api-b6410.firebaseio.com/burgers.json');
@@ -44,13 +54,19 @@ export const Admin = () => {
                 </TableRow>
             </TableHead>
             <TableBody>
-                {burgers.map(burger => (
-                    <Row 
+                {burgers.map(burger => editId === burger.id 
+                    ? <EditRow
+                        key={burger.id}
+                        burger={burger}
+                        cancelEditMode={cancelEditMode}
+                    />
+                    : <Row 
                         key={burger.id} 
                         burger={burger} 
                         refresh={fetchBurgers}
+                        enterEditMode={enterEditMode}
                     />
-                ))}
+                )}
             </TableBody>
             </Table>
         </TableContainer>

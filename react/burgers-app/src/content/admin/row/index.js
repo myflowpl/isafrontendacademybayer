@@ -3,13 +3,17 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import Button from '@mui/material/Button';
 
-export const Row = ({ burger, refresh }) => {
+export const Row = ({ burger, refresh, enterEditMode }) => {
     const handleDelete = () => {
         fetch(`https://rest-api-b6410.firebaseio.com/burgers/${burger.id}.json`, {
             method: 'DELETE'
         }).then(() => {
             refresh();
         })
+    }
+
+    const handleEdit = () => {
+        enterEditMode(burger.id)
     }
 
     return <TableRow>
@@ -19,7 +23,7 @@ export const Row = ({ burger, refresh }) => {
         <TableCell align="right">{burger.ingredients}</TableCell>
         <TableCell align="right">{burger.price}</TableCell>
         <TableCell>
-            <Button variant="contained" color="primary">Edit</Button>
+            <Button variant="contained" color="primary" onClick={handleEdit}>Edit</Button>
         </TableCell>
         <TableCell>
             <Button variant="contained" color="error" onClick={handleDelete}>Delete</Button>
