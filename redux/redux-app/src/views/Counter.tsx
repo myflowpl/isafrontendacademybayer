@@ -3,9 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
 import { createIncrementAction, createDecrementAction, createResetAction } from "../state/counter";
+import { State } from "../store";
 
 export const Counter = () => {
-    const value = useSelector(state => state);
+    const value = useSelector((state: State) => state.counter);
     const dispatch = useDispatch();
 
     const handleIncrementClick = () => {

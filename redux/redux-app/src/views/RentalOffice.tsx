@@ -1,9 +1,13 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { State } from '../store';
 
 export const RentalOffice = () => {
+    const elements = useSelector((state: State) => state.rentalOffice);
+
     return <>
         <h1>RentalOffice</h1>
         <Table striped bordered hover>
@@ -15,21 +19,25 @@ export const RentalOffice = () => {
             </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>The Lion King</td>
-                    <td>
-                        {
-                            false // is element rented
-                                ? <Button variant="secondary">Return</Button>
-                                : <Button variant="primary">Rent</Button>
-                        }
-                    </td>
-                    <td>
-                        <Button variant="danger">
-                            X
-                        </Button>
-                    </td>
-                </tr>
+                {
+                    elements.map(element => (
+                        <tr key={element.id}>
+                            <td>{element.name}</td>
+                            <td>
+                                {
+                                    element.isRented
+                                        ? <Button variant="secondary">Return</Button>
+                                        : <Button variant="primary">Rent</Button>
+                                }
+                            </td>
+                            <td>
+                                <Button variant="danger">
+                                    X
+                                </Button>
+                            </td>
+                        </tr>
+                    ))
+                }
             </tbody>
         </Table>
         <Form className="d-flex">
