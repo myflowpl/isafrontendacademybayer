@@ -29,7 +29,7 @@ const test: Student = {
 }
 
 // ❌ This is not possible with types
-// type UserType {
+// type UserType = {
 //   country: 'PL' | 'GB',
 // }
 
@@ -51,7 +51,7 @@ const payment_2: Payment = {
   currency: 'EUR',
 }
 
-const payment_3 = {
+const payment_3: Payment = {
   amount: 5000,
-  currency: 'EUR' as Currency,
+  currency: 'USD' as Currency,
 }
