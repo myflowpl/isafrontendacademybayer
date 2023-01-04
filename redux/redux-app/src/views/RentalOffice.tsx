@@ -4,9 +4,30 @@ import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { State } from '../store';
+import { createAddAction, createRemoveAction, createRentAction, createReturnAction } from '../state/rental-office';
 
 export const RentalOffice = () => {
     const elements = useSelector((state: State) => state.rentalOffice);
+    const dispatch = useDispatch();
+
+    const handleRemove = (id: number) => {
+        dispatch(createRemoveAction(id))
+    }
+
+    const handleRent = (id: number) => {
+        dispatch(createRentAction(id))
+    }
+
+    const handleReturn= (id: number) => {
+        dispatch(createReturnAction(id))
+    }
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const data = new FormData(e.currentTarget);
+        const newElementName = data.get('name');
+        dispatch(createAddAction(newElementName as string))
+    }
 
     return <>
         <h1>RentalOffice</h1>
@@ -26,12 +47,12 @@ export const RentalOffice = () => {
                             <td>
                                 {
                                     element.isRented
-                                        ? <Button variant="secondary">Return</Button>
-                                        : <Button variant="primary">Rent</Button>
+                                        ? <Button variant="secondary" onClick={() => handleReturn(element.id)}>Return</Button>
+                                        : <Button variant="primary" onClick={() => handleRent(element.id)}>Rent</Button>
                                 }
                             </td>
                             <td>
-                                <Button variant="danger">
+                                <Button variant="danger" onClick={() => handleRemove(element.id)}>
                                     X
                                 </Button>
                             </td>
@@ -40,7 +61,7 @@ export const RentalOffice = () => {
                 }
             </tbody>
         </Table>
-        <Form className="d-flex">
+        <Form className="d-flex" onSubmit={handleSubmit}>
             <Form.Control type="text" name="name" placeholder="Enter name" />
             <Button variant="primary" type="submit">
                 Submit

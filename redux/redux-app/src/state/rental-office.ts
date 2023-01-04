@@ -57,7 +57,7 @@ export const rentalOffice = (state: VHS[] = initialState, action: Action): VHS[]
 }
 
 // ACTION CREATORS
-export const crateAddAction = (name: string): AddAction => ({ type: ADD, payload: name });
-export const crateRemoveAction = (id: number): RemoveAction => ({ type: REMOVE, payload: id });
-export const crateRentAction = (id: number): RentAction => ({ type: RENT, payload: id });
-export const crateReturnAction = (id: number): ReturnAction => ({ type: RETURN, payload: id });
+export const createAddAction = (name: string): AddAction => ({ type: ADD, payload: name });
+export const createRemoveAction = (id: number): RemoveAction => ({ type: REMOVE, payload: id });
+export const createRentAction = (id: number): RentAction => ({ type: RENT, payload: id });
+export const createReturnAction = (id: number): ReturnAction => ({ type: RETURN, payload: id });
