@@ -5,13 +5,13 @@ anything.add();
 
 interface Chicken {
   country: 'PL' | 'DE',
-  cena: number,
-  farma: string,
+  price: number,
+  farm: string,
 }
 
 interface HealthyChicken extends Chicken {
-    country: 'PL',
-  farma: 'WolnaKurka'
+  country: 'PL',
+  farm: 'WolnaKurka'
 }
 
 let biedronkaChicken: unknown = {
@@ -20,13 +20,14 @@ let biedronkaChicken: unknown = {
   farm: 'WolnaKurka'
 }
 
-function healthtChicken(kurczak: any): kurczak is HealthyChicken {
-  return kurczak.krajPochodzenia === 'PL' && kurczak.farma === 'WolnaKurka';
+function healthyChicken(chicken: any): chicken is HealthyChicken {
+  return chicken.country === 'PL' && chicken.farm === 'WolnaKurka';
 }
 
 function buyChicken(): void {
-  // const chicken = biedronkaChicken; //  ❌ we don't have access to any field because the type is unknown
- if (healthtChicken(biedronkaChicken)) {
-   const chicken = biedronkaChicken; // ✅ Here we already have access to the fields of the "KurczakZWolnegoWybiegu" type
+//   const chicken = biedronkaChicken; //  ❌ we don't have access to any field because the type is unknown
+
+ if (healthyChicken(biedronkaChicken)) {
+   const chicken = biedronkaChicken; // ✅ Here we already have access to the fields of the "HealthyChicken" type
  }
 }

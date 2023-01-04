@@ -9,7 +9,7 @@ interface Dog {
 }
 
 // interface Fish {
-//   name: 'Złota rybka',
+//   name: 'Gold fish',
 //   type: 'fish';
 // }
 
@@ -19,10 +19,10 @@ declare const animal: Animal;
 
 switch (animal.type) {
   case 'dog':
-    console.log('To jest pies');
+    console.log('This is dog');
     break;
   case 'cat':
-    console.log('To jest kot');
+    console.log('This is cat');
     break;
   default:
     const isNever: never = animal;

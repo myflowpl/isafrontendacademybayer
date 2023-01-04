@@ -9,7 +9,6 @@ interface User {
 };
 
 
-
 function fetchUsers(): Get<User[]> {
   const users: User[] = [
     {
