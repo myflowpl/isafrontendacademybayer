@@ -2,11 +2,18 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
-import { createIncrementAction, createDecrementAction, createResetAction } from "../state/counter";
+import Spinner from "react-bootstrap/Spinner";
+import { 
+    createIncrementAction, 
+    createDecrementAction, 
+    createResetAction,
+    createAsyncIncrementAction,
+    createAsyncDecrementAction
+} from "../state/counter";
 import { State } from "../store";
 
 export const Counter = () => {
-    const value = useSelector((state: State) => state.counter);
+    const { value, isLoading } = useSelector((state: State) => state.counter);
     const dispatch = useDispatch();
 
     const handleIncrementClick = () => {
@@ -21,17 +28,25 @@ export const Counter = () => {
         dispatch(createResetAction())
     }
 
+    const handleAsyncIncrementClick = () => {
+        dispatch(createAsyncIncrementAction())
+    }
+
+    const handleAsyncDecrementClick = () => {
+        dispatch(createAsyncDecrementAction())
+    }
+
     return <>
         <h1>Counter</h1>
-        <h2>{value}</h2>
+        {isLoading ? <Spinner animation="border" /> : <h2>{value}</h2>}
         <ButtonGroup>
             <Button variant="danger" onClick={handleDecrementClick}>-</Button>
             <Button variant="secondary" onClick={handleResetClick}>reset</Button>
             <Button variant="success" onClick={handleIncrementClick}>+</Button>
         </ButtonGroup>
         <ButtonGroup className="mt-3">
-            <Button variant="warning">async -</Button>
-            <Button variant="primary">async +</Button>
+            <Button variant="warning" onClick={handleAsyncDecrementClick}>async -</Button>
+            <Button variant="primary" onClick={handleAsyncIncrementClick}>async +</Button>
         </ButtonGroup>
     </>
 }

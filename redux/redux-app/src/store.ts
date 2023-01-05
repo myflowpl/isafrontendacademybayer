@@ -1,10 +1,11 @@
-import { createStore, combineReducers } from 'redux';
-import { counter } from './state/counter';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import { counter, CounterState } from './state/counter';
 import { rentalOffice, VHS } from './state/rental-office';
 import { shopCart, Product } from './state/shop-cart';
 
 export type State = {
-    counter: number,
+    counter: CounterState,
     rentalOffice: VHS[],
     shopCart: Product[]
 }
@@ -15,5 +16,13 @@ const reducers = combineReducers({
     shopCart
 });
 
-// @ts-ignore
-export const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+declare global {
+    interface Window {
+      __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    }
+}
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const enhancers = composeEnhancers(applyMiddleware(thunk));
+
+export const store = createStore(reducers, enhancers);
