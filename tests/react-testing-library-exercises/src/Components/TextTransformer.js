@@ -11,10 +11,12 @@ class TextTransformer extends Component {
     value: '',
   };
 
-  setValue = (event) =>
+  setValue = (event) => {
     this.setState({
-      value: transformText(event.currentTarget.value),
-    });
+        value: transformText(event.currentTarget.value),
+      });
+  }
+    
 
   render() {
     const value =
