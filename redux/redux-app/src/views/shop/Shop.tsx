@@ -7,8 +7,8 @@ const products: Product[] = new Array(20).fill(0).map((_, index) => ({
     name: `Product ${index + 1}`,
     price: Math.floor(Math.random() * 1000),
     url: Math.random() > 0.5
-        ? 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png'
-        : 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png'
+        ? 'https://cdn-icons-png.flaticon.com/512/3075/3075977.png'
+        : 'https://cdn-icons-png.flaticon.com/512/877/877951.png'
 }))
 
 export const Shop = () => {
