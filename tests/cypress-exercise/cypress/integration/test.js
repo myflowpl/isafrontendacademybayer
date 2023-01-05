@@ -23,10 +23,20 @@ describe('My First Test', () => {
 
 describe('Cypress example', () => {
   it('should add new todo item', () => {
+    cy.visit('http://localhost:3000/');
 
+    cy.get('input').type('new task{enter}')
+
+    cy.contains('new task').should('exist')
   });
 
   it('should remove todo item', () => {
+    cy.visit('http://localhost:3000/');
 
+    cy.get('input').type('new task{enter}')
+
+    cy.contains('🗑').click();
+
+    cy.contains('new task').should('not.exist')
   });
 });
