@@ -30,7 +30,10 @@ const AddModal = ({ isOpen, handleClose, refresh }) => {
     }
 
     const handleAdd = () => {
-        fetch('https://rest-api-b6410.firebaseio.com/burgers.json', {
+        // const url = 'https://rest-api-b6410.firebaseio.com/burgers.json';
+        const url = 'http://localhost:3333/burgers';
+
+        fetch(url, {
             method: 'POST',
             body: JSON.stringify(formData)
         }).then(() => {
