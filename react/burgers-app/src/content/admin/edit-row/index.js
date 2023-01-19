@@ -15,9 +15,15 @@ export const EditRow = ({ burger, cancelEditMode, refresh }) => {
     }
 
     const handleSave = () => {
-        fetch(`https://rest-api-b6410.firebaseio.com/burgers/${burger.id}.json`, {
+        // const url = `https://rest-api-b6410.firebaseio.com/burgers/${burger.id}.json`;
+        const url = `http://localhost:3333/burgers/${burger.id}`;
+        fetch(url, {
             method: 'PUT',
-            body: JSON.stringify(formData)
+            body: JSON.stringify(formData),
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            }
         }).then(() => {
             cancelEditMode();
             refresh();

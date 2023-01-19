@@ -5,7 +5,9 @@ import Button from '@mui/material/Button';
 
 export const Row = ({ burger, refresh, enterEditMode }) => {
     const handleDelete = () => {
-        fetch(`https://rest-api-b6410.firebaseio.com/burgers/${burger.id}.json`, {
+        // const url = `https://rest-api-b6410.firebaseio.com/burgers/${burger.id}.json`;
+        const url = `http://localhost:3333/burgers/${burger.id}`;
+        fetch(url, {
             method: 'DELETE'
         }).then(() => {
             refresh();

@@ -6,26 +6,57 @@ const burgerRepository = dataSource.getRepository(Burger);
 
 export function burgersRoutes(app: Express) {
 
-  const burgers = [];
+  app.post('/burgers', async function(req, res) {
 
-  app.post('/burgers', function(req, res) {
-
-    const row = {
-      id: Date.now(),
+    const data = {
       ...req.body
     };
+
+    const burger = burgerRepository.create(data);
   
-    burgers.push(row);
+    await burgerRepository.save(burger);
   
-    // res.json(row);
-    res.end();
+    res.json(burger);
   });
   
   app.get('/burgers', async function(req, res) {
 
-    const burgers = await burgerRepository.find();
+    const burgers = await burgerRepository.find({
+      order: {id: 'ASC'}
+    });
 
     res.json(burgers);
+  })
+
+  app.put('/burgers/:id', async function(req, res) {
+    
+    const id = parseInt(req.params.id, 10);
+    const data = req.body;
+
+    const burger = await burgerRepository.findOneBy({ id });
+
+    if(!burger) {
+      return res.status(404).json({ error: `Burger ${id} not found`})
+    }
+
+    const updated = await burgerRepository.update(id, data);
+
+    res.json(updated);
+  })
+
+  app.delete('/burgers/:id', async function(req, res) {
+    
+    const id = parseInt(req.params.id, 10);
+
+    const burger = await burgerRepository.findOneBy({ id });
+
+    if(!burger) {
+      return res.status(404).json({ error: `Burger ${id} not found`})
+    }
+
+    const updated = await burgerRepository.delete(id);
+
+    res.json(updated);
   })
   
 }
