@@ -35,7 +35,11 @@ const AddModal = ({ isOpen, handleClose, refresh }) => {
 
         fetch(url, {
             method: 'POST',
-            body: JSON.stringify(formData)
+            body: JSON.stringify(formData),
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            }
         }).then(() => {
             handleClose();
             refresh();

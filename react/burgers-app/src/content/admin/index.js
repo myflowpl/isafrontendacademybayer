@@ -31,7 +31,8 @@ export const Admin = () => {
     }
 
     const fetchBurgers = async () => {
-        const response = await fetch('https://rest-api-b6410.firebaseio.com/burgers.json');
+        // const response = await fetch('https://rest-api-b6410.firebaseio.com/burgers.json');
+        const response = await fetch('http://localhost:3333/burgers');
         const data = await response.json();
 
         const formattedData = Object.keys(data).map(key => ({ id: key, ...data[key] }));
