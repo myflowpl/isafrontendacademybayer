@@ -8,21 +8,13 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar'
 
-
-/* FIREBASE YOU CAN OMIT THIS PART */
-import { getAuth, signOut } from 'firebase/auth';
-/* END */
-
 export const Navigation = () => {
 
  
-    const user = useUserContext();
+    const {user, logout} = useUserContext();
 
     const handleLogout = () => {
-        /* FIREBASE YOU CAN OMIT THIS PART */
-        const auth = getAuth();
-        signOut(auth);
-        /* END */
+        logout();
     }
 
     return (

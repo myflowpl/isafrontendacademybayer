@@ -5,11 +5,11 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 
-/* FIREBASE YOU CAN OMIT THIS PART */
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-/* END */
+import { http } from '../../common/http';
+import { useUserContext } from '../../services/user-context';
 
 export const Sign = () => {
+    const {login} = useUserContext();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -19,14 +19,16 @@ export const Sign = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
+        const data = {
+            email,
+            password
+        };
 
-        /* FIREBASE YOU CAN OMIT THIS PART */
-        const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, password)
-        /* END */
-            .then(() => {
-                navigate('/')
-            })
+        http.post('/auth/login', data).then((res) => {
+            login(res.token, res.user);
+            navigate('/')
+        })
     }
 
     return (

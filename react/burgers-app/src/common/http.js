@@ -2,7 +2,7 @@
 const baseUrl = 'http://localhost:3333';
 
 export const http = {
-
+  token: '',
   fetch(url, options) {
 
     url = url?.substr(0,1) === '/' ? baseUrl+url : url;
