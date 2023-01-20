@@ -8,13 +8,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { http } from '../../common/http';
 
 export const Menu = () => {
     const [burgers, setBurgers] = useState([]);
 
     useEffect(() => {
-        fetch('https://rest-api-b6410.firebaseio.com/burgers.json')
-            .then(r => r.json())
+        http.get('/burgers')
             .then(data => {
                 const formattedData = Object.keys(data).map(key => ({ id: key, ...data[key] }));
                 setBurgers(formattedData);

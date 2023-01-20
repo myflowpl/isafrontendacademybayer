@@ -3,6 +3,7 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { http } from '../../../common/http';
 
 export const EditRow = ({ burger, cancelEditMode, refresh }) => {
     const [formData, setFormData] = useState(burger);
@@ -15,16 +16,8 @@ export const EditRow = ({ burger, cancelEditMode, refresh }) => {
     }
 
     const handleSave = () => {
-        // const url = `https://rest-api-b6410.firebaseio.com/burgers/${burger.id}.json`;
-        const url = `http://localhost:3333/burgers/${burger.id}`;
-        fetch(url, {
-            method: 'PUT',
-            body: JSON.stringify(formData),
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            }
-        }).then(() => {
+
+        http.put(`/burgers/${burger.id}`, formData).then(() => {
             cancelEditMode();
             refresh();
         })

@@ -4,10 +4,7 @@ import { PageWrapper } from "../../common/page-wrapper"
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
-
-/* FIREBASE YOU CAN OMIT THIS PART */
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-/* END */
+import { http } from '../../common/http';
 
 export const Register = () =>{
   const [email, setEmail] = useState('');
@@ -27,14 +24,14 @@ export const Register = () =>{
  
       e.preventDefault();
 
-      /* FIREBASE YOU CAN OMIT THIS PART */
-      const auth = getAuth();
-      signInWithEmailAndPassword(auth, email, password)
-      /* END */
-          .then(() => {
-              navigate('/')
-          })
-    
+      http.post('/auth/register', {
+        name,
+        email,
+        password
+      }).then(() => {
+        navigate('/sign-in')
+      })
+
   }
 
 

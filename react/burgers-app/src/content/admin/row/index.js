@@ -2,14 +2,13 @@ import { Link } from 'react-router-dom';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import Button from '@mui/material/Button';
+import { http } from '../../../common/http';
 
 export const Row = ({ burger, refresh, enterEditMode }) => {
     const handleDelete = () => {
-        // const url = `https://rest-api-b6410.firebaseio.com/burgers/${burger.id}.json`;
-        const url = `http://localhost:3333/burgers/${burger.id}`;
-        fetch(url, {
-            method: 'DELETE'
-        }).then(() => {
+
+
+        http.delete(`/burgers/${burger.id}`).then(() => {
             refresh();
         })
     }

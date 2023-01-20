@@ -4,6 +4,7 @@ import { PageWrapper } from '../../../common/page-wrapper'
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
+import { http } from '../../../common/http';
 
 export const Details = () => {
     const [burger, setBurger] = useState(null);
@@ -11,8 +12,7 @@ export const Details = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`https://rest-api-b6410.firebaseio.com/burgers/${id}.json`)
-            .then(r => r.json())
+        http.get(`/burgers/${id}`)
             .then(data => {
                 setBurger(data)
             })

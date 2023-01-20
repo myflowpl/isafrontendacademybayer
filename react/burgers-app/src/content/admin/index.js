@@ -12,6 +12,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { http } from '../../common/http';
 
 const ButtonContainer = styled.div`
     margin-top: 20px;
@@ -31,9 +32,8 @@ export const Admin = () => {
     }
 
     const fetchBurgers = async () => {
-        // const response = await fetch('https://rest-api-b6410.firebaseio.com/burgers.json');
-        const response = await fetch('http://localhost:3333/burgers');
-        const data = await response.json();
+
+        const data = await http.get('/burgers');
 
         const formattedData = Object.keys(data).map(key => ({ id: key, ...data[key] }));
         setBurgers(formattedData);

@@ -8,6 +8,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { http } from '../../../common/http';
 
 const FormContainer = styled.div`
     display: flex;
@@ -30,17 +31,8 @@ const AddModal = ({ isOpen, handleClose, refresh }) => {
     }
 
     const handleAdd = () => {
-        // const url = 'https://rest-api-b6410.firebaseio.com/burgers.json';
-        const url = 'http://localhost:3333/burgers';
 
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(formData),
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            }
-        }).then(() => {
+        http.post('/burgers', formData).then(() => {
             handleClose();
             refresh();
         })
