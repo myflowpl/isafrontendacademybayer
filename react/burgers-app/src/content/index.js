@@ -4,6 +4,7 @@ import { Menu } from './menu';
 import { Details } from './menu/details';
 import { Admin } from './admin';
 import { Sign } from './sign';
+import { Register } from './register';
 
 export const Content = () => {
     return (
@@ -13,6 +14,7 @@ export const Content = () => {
             <Route path="/menu/:id" element={<Details />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/sign-in" element={<Sign />} />
+            <Route path="/register" element={<Register />} />
         </Routes>
     )
 }

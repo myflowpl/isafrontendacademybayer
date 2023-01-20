@@ -8,11 +8,14 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar'
 
+
 /* FIREBASE YOU CAN OMIT THIS PART */
 import { getAuth, signOut } from 'firebase/auth';
 /* END */
 
 export const Navigation = () => {
+
+ 
     const user = useUserContext();
 
     const handleLogout = () => {
@@ -46,7 +49,10 @@ export const Navigation = () => {
               {
                 user 
                     ? <Button color="inherit" onClick={handleLogout} >Logout</Button>
-                    : <Button color="inherit" component={Link} to="/sign-in">Login</Button>
+                    : <div>
+                      <Button color="inherit" component={Link} to="/sign-in">Login</Button>
+                      <Button color="inherit" component={Link} to="/register">Register</Button>
+                      </div>
               }
             </Toolbar>
           </AppBar>
